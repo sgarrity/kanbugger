@@ -1,3 +1,5 @@
+var kbAPIKeyName = 'kbAPIKey';
+
 function getSelectedText(elementId) {
     var elt = document.getElementById(elementId);
 
@@ -8,5 +10,14 @@ function getSelectedText(elementId) {
 }
 
 if ( getSelectedText('product') == "www.mozilla.org" ) {
-    $('#commit').after('<a id="kanbutton" href="#"><span></span></a>');
+    var apiKey = localStorage.getItem(kbAPIKeyName);
+    var $button = $('<a id="kanbutton" href="#"><span></span></a>');
+    $('#commit').after($button);
+    if ( ! apiKey ) {
+        apiKey = prompt('Kanbanery API Key Please');
+        localStorage.setItem(kbAPIKeyName, apiKey);
+    }
+    if (apiKey) {
+        // DO THE THINGS o/
+    }
 }
