@@ -3,7 +3,7 @@ kanbugger
 
 A Firefox Add-on for importing Bugzilla bugs as Kanbanery cards.
 
-If you have the add-on SDK(https://github.com/mozilla/addon-sdk)
+If you have the [Add-on SDK](https://github.com/mozilla/addon-sdk)
 installed, you can test the add-on with:
 
 `cfx run`
