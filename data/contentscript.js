@@ -1,21 +1,21 @@
-var Request = require("sdk/request").Request;
 
 var kbAPIKeyName = 'kbAPIKey';
 var kbWorkspace = 'mozilla';
 var kbProjectId = '33256';
+var addon_self = self;
 
-function getSelectedText(elementId) {
-    var elt = document.getElementById(elementId);
-
-    if (elt.selectedIndex == -1)
-        return null;
-
-    return elt.options[elt.selectedIndex].text;
+function getProduct() {
+    var bzProduct = $('#product option:selected').val();
+    // maybe not logged in
+    if ( ! bzProduct ) {
+        bzProduct = $('#field_container_product').text();
+    }
+    return bzProduct;
 }
 
-if ( getSelectedText('product') == "www.mozilla.org" ) {
+if ( getProduct() === "www.mozilla.org" ) {
     var $button = $('<a id="kanbutton" href="#"><span></span></a>');
-    $('#commit').after($button);
+    $button.insertAfter('#summary_alias_container');
 
     $button.on('click', function(e){
         e.preventDefault();
@@ -29,18 +29,16 @@ if ( getSelectedText('product') == "www.mozilla.org" ) {
                          '.kanbanery.com/api/v1/projects/' +
                          kbProjectId + '/icebox/tasks.json';
             var cardData = {
-                task_type_id: 'Story',
-                title: document.getElementById('short_desc_nonedit_display').text,
-                description: document.location.href
-            }
-            Request({
+                'task[task_type_name]': 'Story',
+                'task[title]': $('#short_desc_nonedit_display').text(),
+                'task[description]': document.location.href
+            };
+            var reqData = {
                 url: reqURL,
                 headers: {'X-Kanbanery-ApiToken': apiKey},
-                content: cardData,
-                onComplete: function(){
-                    alert('I HAVE CREATED CARD!');
-                }
-            }).post();
+                content: cardData
+            };
+            addon_self.port.emit('callKB', reqData);
         }
     })
 }
