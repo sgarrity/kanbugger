@@ -1,1 +1,14 @@
-{"license": "", "description": "", "contributors": [], "author": "sancus", "url": "", "dependencies": ["api-utils", "addon-kit"], "version": "initial.rev79", "lib": "lib", "fullName": "sancus", "main": "main", "id": "jid0-ftAOssWxThVAoXJ2jrhQw1FAC5I", "name": "sancus"}
+{
+    "license": "MPL 2.0",
+    "description": "An add-on to import bugzilla bugs to kanbanery.",
+    "contributors": ["Paul McLanahan <pmac@mclanahan.net>"],
+    "author": "Andrei Hajdukewycz <sancus@off.net>",
+    "url": "https://github.com/Sancus/kanbugger",
+    "dependencies": ["api-utils", "addon-kit"],
+    "version": "0.1",
+    "lib": "lib", 
+    "fullName": "Kanbugger",
+    "main": "kanbugger",
+    "id": "kanbugger@mozilla.org",
+    "name": "kanbugger"
+}
