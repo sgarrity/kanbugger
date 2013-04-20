@@ -1,7 +1,10 @@
 {
     "license": "MPL 2.0",
-    "description": "An add-on to import bugzilla bugs to kanbanery.",
-    "contributors": ["Paul McLanahan <pmac@mclanahan.net>"],
+    "description": "An add-on to share data between kanbanery and bugzilla.",
+    "contributors": [
+        "Paul McLanahan <pmac@mclanahan.net>",
+        "Justin Crawford <justin@tentacu.com>"
+    ],
     "author": "Andrei Hajdukewycz <sancus@off.net>",
     "url": "https://github.com/Sancus/kanbugger",
     "dependencies": ["api-utils", "addon-kit"],
