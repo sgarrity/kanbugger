@@ -105,6 +105,7 @@ for (let i of mapping) {
     if ( getProduct() === i.bzProduct ) {
         if (getComponent() === i.bzComponent || i.bzComponent === "") {
             var cardId = getCardId();
+            var projectId = i.kanProjectId;
             var $button = $('<a id="kanbutton" href="#"><span></span></a>');
             $button.insertAfter('#summary_alias_container');
             if (cardId) {
@@ -113,7 +114,7 @@ for (let i of mapping) {
             }
             else {
               console.log("No Kanban card found.");
-              $button.on('click', function (e) { makeKanCard(e, i.kanProjectId); })
+              $button.on('click', function (e) { makeKanCard(e, projectId); })
             }
         }
     }
