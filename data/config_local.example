@@ -1,0 +1,19 @@
+{
+    "mapping" : [
+        {
+            "bzProduct": "www.mozilla.org",
+            "bzComponent": "",
+            "kanProjectId": 33256
+        },
+        {
+            "bzProduct": "Community Tools",
+            "bzComponent": "Phonebook",
+            "kanProjectId": 23282
+        },
+        { 
+            "bzProduct": "FoodReplicator", 
+            "bzComponent": "", 
+            "kanProjectId": 35356
+        }
+    ]
+}
