@@ -2,27 +2,10 @@ var kbAPIKeyName = 'kbAPIKey';
 var kbWorkspace = 'mozilla';
 var addon_self = self;
 
-var mapping;
-
-// if we passed in a mapping on command line use it
-if (self.options.mapping) {
-    console.log("Custom mapping provided: " + JSON.stringify(self.options.mapping));
-    mapping = self.options.mapping;
-}
-
-else {
-  mapping = [
-      {
-          "bzProduct": "www.mozilla.org",
-          "bzComponent": "",
-          "kanProjectId": 33256
-      },
-      {
-          "bzProduct": "Community Tools",
-          "bzComponent": "Phonebook",
-          "kanProjectId": 23282
-      }
-  ]
+var config = self.options.config;
+if (self.options.config_local) {
+  // this will clobber (not concat) default mapping
+  $.extend(config, self.options.config_local);
 }
 
 function getProduct() {
@@ -101,7 +84,7 @@ function showKanCard(e, cardId) {
 }
 
 
-for (let i of mapping) {
+for (let i of config.mapping) {
     if ( getProduct() === i.bzProduct ) {
         if (getComponent() === i.bzComponent || i.bzComponent === "") {
             var cardId = getCardId();
