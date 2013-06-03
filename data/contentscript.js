@@ -47,10 +47,24 @@ function getApiKey() {
     return apiKey;
 }
 
+function isLoggedIn() {
+    if ($('#login_link_top').length) {
+        console.log("Not logged in.")
+        $('#bugzilla-body').prepend('<table cellpadding="20">' +
+            '<tbody><tr><td id="error_msg" class="throw_error">' +
+                'You must login to use Kanbugger' +
+            '</td></tr></tbody></table>');
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
 function makeKanCard(e, kbProjectId) {
     e.preventDefault();
     var apiKey = getApiKey();
-    if (apiKey) {
+    if (apiKey && isLoggedIn()) {
         var reqURL = 'https://' + kbWorkspace +
                      '.kanbanery.com/api/v1/projects/' +
                      kbProjectId + '/icebox/tasks.json';
@@ -65,10 +79,10 @@ function makeKanCard(e, kbProjectId) {
             content: cardData
         };
         addon_self.port.emit('kbPost', reqData);
-    }  
+    }
 }
 
-function showKanCard(e, cardId) {
+function getKanCard(e, cardId) {
     e.preventDefault();
     var apiKey = getApiKey();
     if (apiKey) {
@@ -77,12 +91,18 @@ function showKanCard(e, cardId) {
                      cardId + '.json';
         var reqData = {
             url: reqURL,
-            headers: {'X-Kanbanery-ApiToken': apiKey},
+            headers: {'X-Kanbanery-ApiToken': apiKey}
         };
         addon_self.port.emit('kbGet', reqData);
-    }  
+    }
 }
 
+// Register a listener that will update bugzilla with a new card id
+addon_self.port.on('updateBug', function(id) {
+    var $wb = $('#status_whiteboard')
+    $wb.val('[kb=' + id + '] ' + $wb.val());
+    $('#commit').click();
+});
 
 for (let i of config.mapping) {
     if ( getProduct() === i.bzProduct ) {
@@ -93,7 +113,7 @@ for (let i of config.mapping) {
             $button.insertAfter('#summary_alias_container');
             if (cardId) {
               console.log("Kanban card found -- ID: " + cardId);
-              $button.on('click', function (e) { showKanCard(e, cardId); })
+              $button.on('click', function (e) { getKanCard(e, cardId); })
             }
             else {
               console.log("No Kanban card found.");
