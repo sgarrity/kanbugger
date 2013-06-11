@@ -6,6 +6,16 @@
             "kanProjectId": 33256
         },
         {
+            "bzProduct": "Snippets",
+            "bzComponent": "Service",
+            "kanProjectId": 35613
+        },
+        {
+            "bzProduct": "Mozilla Reps",
+            "bzComponent": "reps.mozilla.org",
+            "kanProjectId": 28874
+        },
+        {
             "bzProduct": "Community Tools",
             "bzComponent": "Phonebook",
             "kanProjectId": 23282
