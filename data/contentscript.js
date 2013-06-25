@@ -98,9 +98,9 @@ function getKanCard(e, cardId) {
 }
 
 // Register a listener that will update bugzilla with a new card id
-addon_self.port.on('updateBug', function(id) {
+addon_self.port.on('updateBug', function(json) {
     var $wb = $('#status_whiteboard');
-    $wb.val('[kb=' + id + '] ' + $wb.val());
+    $wb.val('[kb=' + json.id + '] ' + $wb.val());
     $('#commit').click();
 });
 
