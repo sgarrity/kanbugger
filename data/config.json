@@ -19,6 +19,11 @@
             "bzProduct": "Community Tools",
             "bzComponent": "Phonebook",
             "kanProjectId": 23282
+        },
+        {
+            "bzProduct": "Websites",
+            "bzComponent": "Firefox Flicks",
+            "kanProjectId": 28280
         }
     ]
 }
