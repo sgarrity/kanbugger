@@ -84,12 +84,9 @@ window.addEventListener("ready", function(event) {
 
 // trigger event from kanbanery app on initial load
 var script = document.createElement( "script" );
-script.innerHTML =  'function ready() {' +
+script.innerHTML =  '$(document).on("initial-load-finished", function() {' +
                         'var kbgr_e = new CustomEvent("ready");' +
                         'window.dispatchEvent(kbgr_e);' +
-                    '}' +
-                    '$(document).on("initial-load-finished", function() {' +
-                        'ready();' +
                     '});';
 document.body.appendChild(script);
 
