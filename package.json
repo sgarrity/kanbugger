@@ -8,7 +8,7 @@
     "author": "Andrei Hajdukewycz <sancus@off.net>",
     "url": "https://github.com/Sancus/kanbugger",
     "dependencies": ["api-utils", "addon-kit"],
-    "version": "0.2.4",
+    "version": "0.3.0",
     "lib": "lib", 
     "fullName": "Kanbugger",
     "main": "kanbugger",
