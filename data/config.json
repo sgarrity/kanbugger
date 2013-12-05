@@ -6,6 +6,11 @@
             "kanProjectId": 33256
         },
         {
+            "bzProduct": "Websites",
+            "bzComponent": "Tabzilla",
+            "kanProjectId": 33256
+        },
+        {
             "bzProduct": "Snippets",
             "bzComponent": "Service",
             "kanProjectId": 35613
